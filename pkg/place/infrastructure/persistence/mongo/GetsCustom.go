@@ -18,7 +18,6 @@ func (mo *MongoRepository) GetsCustom(city *string, pref, cuV *[]string) (*[]dom
 		return nil, fmt.Errorf("database error: couldn't get object with ID: %v from database", *city)
 	}
 	defer cursor.Close(context.Background())
-
 	for cursor.Next(context.Background()) {
 		var place domain.Place
 		err := cursor.Decode(&place)

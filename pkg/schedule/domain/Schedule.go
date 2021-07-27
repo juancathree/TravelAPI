@@ -15,7 +15,7 @@ type Schedule struct {
 }
 
 // NewSchedule calculate travelTime and validate the schedule
-func (s *Schedule) NewSchedule() error {
+func (s *Schedule) Initialize() error {
 	// Calculate TravelTime
 	s.TravelTime = int(s.EndDay.Sub(s.StartDay).Hours())/24 + 1
 

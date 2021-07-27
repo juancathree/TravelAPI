@@ -8,6 +8,7 @@ import (
 // GetTotalHours returns the total hours
 // available to visit places
 func (s *Schedule) GetTotalHours() *float64 {
+
 	// Get hours of first day
 	hours := s.ItineraryEndTime.Hour() - s.StartDay.Hour()
 
@@ -18,15 +19,12 @@ func (s *Schedule) GetTotalHours() *float64 {
 	hours += s.EndDay.Hour() - s.ItineraryStartTime.Hour()
 
 	// Estimate how many kilometers can do
-	kmh, err := strconv.Atoi(os.Getenv("TRAVELER_KMH"))
+	kmh, err := strconv.ParseFloat(os.Getenv("TRAVELER_KMH"), 64)
 	if err != nil {
 		return nil
 	}
 
-	hours *= kmh
-
-	// Convert hours to float64
-	totalTime := float64(hours)
+	totalTime := float64(hours) * kmh
 
 	return &totalTime
 }

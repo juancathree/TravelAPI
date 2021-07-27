@@ -13,3 +13,11 @@ type Itinerary struct {
 	Preferences           []string        `validate:"dive,unique" json:"preferences" bson:"preferences"`
 	journeyDomain.Journey `validate:"required" json:"routes" bson:"routes"`
 }
+
+func (i *Itinerary) Initialize() {
+	// Initialize Schedule
+	i.Schedule.Initialize()
+
+	// Initialize Journey
+	i.Journey.Initialize(&i.TravelTime)
+}

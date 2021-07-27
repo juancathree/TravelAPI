@@ -10,24 +10,18 @@ type Place struct {
 }
 
 type Location struct {
-	Type        string      `validate:"required" json:"type" bson:"type"`
-	Coordinates Coordinates `validate:"required" json:"coordinates" bson:"coordinates"`
+	Type        string    `validate:"required" json:"type" bson:"type"`
+	Coordinates []float64 `validate:"required" json:"coordinates" bson:"coordinates"`
 }
-
-type Coordinates struct {
-	Latitude  float64 `validate:"required,latitude" json:"latitude" bson:"latitude"`
-	Longitude float64 `validate:"required,longitude" json:"longitude" bson:"longitude"`
-}
-
 type Visit struct {
 	All     float64 `json:"all,omitempty" bson:"all,omitempty"`
 	Outside float64 `json:"outside,omitempty" bson:"outside,omitempty"`
 }
 
 func (p *Place) Latitude() float64 {
-	return p.Location.Coordinates.Latitude
+	return p.Location.Coordinates[0]
 }
 
 func (p *Place) Longitude() float64 {
-	return p.Location.Coordinates.Longitude
+	return p.Location.Coordinates[1]
 }

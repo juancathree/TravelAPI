@@ -8,4 +8,5 @@ import (
 
 func Router(router fiber.Router) {
 	router.Get("/:id", handler.Get())
+	router.Post("/", handler.Post())
 }

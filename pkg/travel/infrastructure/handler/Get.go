@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"TravelAPI/pkg/user/application"
+	"TravelAPI/pkg/travel/application"
 
 	"github.com/gofiber/fiber/v2"
 )
