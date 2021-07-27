@@ -13,3 +13,12 @@ type Expense struct {
 	Category    string  `validate:"required" json:"category" bson:"category"`
 	Description string  `validate:"required,max=30" json:"description" bson:"description"`
 }
+
+func (e *Expenses) Initialize(userID *string) {
+	*e = make(Expenses)
+	userExpense := UserExpense{
+		Amount:  0.0,
+		Expense: []Expense{},
+	}
+	(*e)[*userID] = userExpense
+}
