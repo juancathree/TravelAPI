@@ -7,12 +7,11 @@ import (
 )
 
 type User struct {
-	ID       string   `json:"_id" bson:"_id"`
+	ID       string   `json:"_id,omitempty" bson:"_id,omitempty"`
 	Name     string   `validate:"required" json:"name" bson:"name"`
 	Email    string   `validate:"required,email" json:"email" bson:"email"`
 	Password string   `validate:"required" json:"password" bson:"password"`
-	Country  string   `validate:"required" json:"country" bson:"country"`
-	Travels  []string `validate:"required,dive,unique" json:"travels" bson:"travels"`
+	Travels  []string `validate:"dive,unique" json:"travels,omitempty" bson:"travels,omitempty"`
 }
 
 func (u *User) SetPassword(password *string) error {
