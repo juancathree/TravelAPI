@@ -21,7 +21,7 @@ func Post() fiber.Handler {
 		}
 
 		// Initialize and save in database
-		travel, err := application.Post(&requestBody, c.Locals("UserID").(string))
+		travel, err := application.Post(&requestBody, c.Locals("email").(string))
 		if err != nil {
 			return c.Status(fiber.StatusInternalServerError).JSON(&fiber.Map{
 				"error": err.Error(),
