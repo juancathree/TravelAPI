@@ -8,6 +8,7 @@ import (
 )
 
 func CreateJourney(itinerary *itineraryDomain.Itinerary) error {
+
 	// Get places
 	places, err := placeRepo.GetsCustom(&itinerary.City, &itinerary.Preferences, &itinerary.CustomVisitLocations)
 	if err != nil {
