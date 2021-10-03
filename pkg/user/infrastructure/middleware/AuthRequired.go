@@ -10,7 +10,7 @@ import (
 func AuthRequired() func(*fiber.Ctx) error {
 	return func(c *fiber.Ctx) error {
 		// Get jwt token from cookie
-		cookie := c.Cookies("jwt")
+		cookie := c.Cookies("travelapp")
 
 		// Check if token is valid
 		token, err := jwt.ParseWithClaims(cookie, &jwt.StandardClaims{}, func(t *jwt.Token) (interface{}, error) {
@@ -27,7 +27,7 @@ func AuthRequired() func(*fiber.Ctx) error {
 		claims := token.Claims.(*jwt.StandardClaims)
 
 		// Set in context the userID
-		c.Locals("UserID", claims.Issuer)
+		c.Locals("email", claims.Issuer)
 
 		// Pass to handler
 		return c.Next()
