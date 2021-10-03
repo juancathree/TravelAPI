@@ -14,7 +14,6 @@ func (mo *MongoRepository) Gets(city *string) (*[]domain.Place, error) {
 	places := make([]domain.Place, 0, 20)
 	cursor, err := mo.Collection.Find(context.Background(), filter)
 	if err != nil {
-		fmt.Println(err)
 		return nil, fmt.Errorf("database error: couldn't get object with ID: %v from database", *city)
 	}
 	defer cursor.Close(context.Background())
