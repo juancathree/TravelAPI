@@ -7,6 +7,6 @@ import (
 )
 
 func Router(router fiber.Router) {
-	router.Get("/login", handler.Login())
+	router.Post("/login", handler.Login())
 	router.Post("/register", handler.Register())
 }
