@@ -7,7 +7,7 @@ import (
 
 func (mo *MongoRepository) CreateFilterID(userID *string) *primitive.M {
 	// Create a filter for MongoDB query
-	filter := bson.M{"_id": *userID}
+	filter := bson.M{"email": *userID}
 
 	return &filter
 }
