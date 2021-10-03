@@ -1,5 +1,7 @@
 package domain
 
+import "strings"
+
 type Expenses map[string]UserExpense
 
 type UserExpense struct {
@@ -10,7 +12,7 @@ type UserExpense struct {
 type Expense struct {
 	Amount      float64 `validate:"required" json:"amount" bson:"amount"`
 	IsPersonal  bool    `validate:"required" json:"isPersonal" bson:"isPersonal"`
-	Category    string  `validate:"required" json:"category" bson:"category"`
+	Category    string  `json:"category" bson:"category"`
 	Description string  `validate:"required,max=30" json:"description" bson:"description"`
 }
 
@@ -20,5 +22,5 @@ func (e *Expenses) Initialize(userID *string) {
 		Amount:  0.0,
 		Expense: []Expense{},
 	}
-	(*e)[*userID] = userExpense
+	(*e)[strings.Split(*userID, "@")[0]] = userExpense
 }
