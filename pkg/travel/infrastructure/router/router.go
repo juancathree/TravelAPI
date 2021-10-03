@@ -7,6 +7,9 @@ import (
 )
 
 func Router(router fiber.Router) {
-	router.Get("/:id", handler.Get())
+	router.Get("/", handler.Gets())
 	router.Post("/", handler.Post())
+	router.Post("/expenses", handler.PutExpenses())
+	router.Put("/users", handler.PutUsers())
+	router.Put("/", handler.Put())
 }
