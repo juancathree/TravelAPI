@@ -9,7 +9,7 @@ import (
 
 func Login(user *domain.User) error {
 	// Get User from database
-	userRepo, err := repo.Get(&user.ID)
+	userRepo, err := repo.Get(&user.Email)
 	if err != nil {
 		return err
 	}
