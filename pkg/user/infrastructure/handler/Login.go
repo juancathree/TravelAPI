@@ -45,18 +45,8 @@ func Login() fiber.Handler {
 			})
 		}
 
-		// Create the cookie
-		cookie := fiber.Cookie{
-			Name:     "jwt",
-			Value:    token,
-			Expires:  time.Now().Add(time.Hour * 24 * 365),
-			HTTPOnly: true,
-		}
-
-		c.Cookie(&cookie)
-
 		return c.Status(fiber.StatusOK).JSON(&fiber.Map{
-			"msg": "successful login",
+			"travelapp": token,
 		})
 	}
 }
